@@ -27,9 +27,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 function App() {
   const data = useLoaderData<typeof loader>();
   const [theme] = useTheme();
-  console.log(theme);
   return (
-    // <html lang="en" className="dark text-foreground bg-background">
     <html lang="en" data-theme={theme ?? ""}>
       <head>
         <meta charSet="utf-8" />
