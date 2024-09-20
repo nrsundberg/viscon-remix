@@ -6,9 +6,13 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import "./tailwind.css";
+import { NextUIProvider } from "@nextui-org/react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import "remixicon/fonts/remixicon.css?url";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
+    // <html lang="en" className="dark text-foreground bg-background">
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
@@ -17,9 +21,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <NextUIProvider>
+          <NextThemesProvider attribute="class" defaultTheme="dark">
+            {children}
+            <ScrollRestoration />
+            <Scripts />
+          </NextThemesProvider>
+        </NextUIProvider>
       </body>
     </html>
   );
