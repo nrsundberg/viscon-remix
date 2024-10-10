@@ -75,7 +75,7 @@ const Sidebar = () => {
                   title="Layouts & Outlet"
                 />
                 <NavLinkWrapper to={"/loaders"} title="Loaders" />
-                <NavLinkWrapper to={"/loaders"} title="Actions" />
+                <NavLinkWrapper to={"/actions"} title="Actions" />
               </ul>
             </div>
             <div>
