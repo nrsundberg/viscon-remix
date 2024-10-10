@@ -1,7 +1,7 @@
 import { Button, Divider } from "@nextui-org/react";
 import { RiMenuFold2Fill, RiMenuFoldFill } from "@remixicon/react";
 import { useState } from "react";
-import { Link } from "@remix-run/react";
+import { Link, NavLink } from "@remix-run/react";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -14,7 +14,7 @@ const Sidebar = () => {
     <div
       className="grid grid-cols-2"
       style={{
-        width: isCollapsed ? "50px" : "200px",
+        width: isCollapsed ? "50px" : "450px",
         transition: "width 0.3s",
       }}
     >
@@ -30,27 +30,32 @@ const Sidebar = () => {
         {!isCollapsed && (
           <div>
             <div>
-              <h3>Section 1</h3>
+              <h2>What, Who, When, Why</h2>
               <ul className="indent-3">
                 <li>
-                  <Link to="/1" className="no-underline">
-                    Bullet 1
-                  </Link>
+                  <NavLink to="/1" className="no-underline">
+                    SSR React
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to="/2" className="no-underline">
-                    Bullet 2
-                  </Link>
+                  <NavLink to="/2" className="no-underline">
+                    React Router
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to="/3" className="no-underline">
-                    Bullet 3
-                  </Link>
+                  <NavLink to="/3" className="no-underline">
+                    Trajectory
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/3" className="no-underline">
+                    Speeeeeed
+                  </NavLink>
                 </li>
               </ul>
             </div>
             <div>
-              <h3>Section 2</h3>
+              <h3>Init Project</h3>
               <ul className="indent-3">
                 <li>Bullet 1</li>
                 <li>Bullet 2</li>
@@ -58,7 +63,15 @@ const Sidebar = () => {
               </ul>
             </div>
             <div>
-              <h3>Section 3</h3>
+              <h3>Bread & Butter</h3>
+              <ul className="indent-3">
+                <li>Routes</li>
+                <li>Loaders</li>
+                <li>Actions</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Review</h3>
               <ul className="indent-3">
                 <li>Bullet 1</li>
                 <li>Bullet 2</li>
