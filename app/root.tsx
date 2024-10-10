@@ -4,14 +4,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData, useNavigate,
+  useLoaderData,
+  useNavigate
 } from "@remix-run/react";
 import "./tailwind.css";
 import { NextUIProvider } from "@nextui-org/react";
 import {
-  ThemeProvider,
   PreventFlashOnWrongTheme,
-  useTheme,
+  ThemeProvider,
+  useTheme
 } from "remix-themes";
 import { themeSessionResolver } from "./sessions.server";
 import { LoaderFunction } from "@remix-run/node";
@@ -20,14 +21,14 @@ import { LoaderFunction } from "@remix-run/node";
 export const loader: LoaderFunction = async ({ request }) => {
   const { getTheme } = await themeSessionResolver(request);
   return {
-    theme: getTheme(),
+    theme: getTheme()
   };
 };
 
 function App() {
   const data = useLoaderData<typeof loader>();
   const [theme] = useTheme();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <html lang="en" data-theme={theme ?? ""}>
