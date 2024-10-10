@@ -4,7 +4,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
+  useLoaderData, useNavigate,
 } from "@remix-run/react";
 import "./tailwind.css";
 import { NextUIProvider } from "@nextui-org/react";
@@ -27,6 +27,8 @@ export const loader: LoaderFunction = async ({ request }) => {
 function App() {
   const data = useLoaderData<typeof loader>();
   const [theme] = useTheme();
+  const navigate = useNavigate()
+
   return (
     <html lang="en" data-theme={theme ?? ""}>
       <head>
@@ -37,7 +39,7 @@ function App() {
         <Links />
       </head>
       <body>
-        <NextUIProvider>
+        <NextUIProvider navigate={navigate}>
           <Outlet />
           <ScrollRestoration />
           <Scripts />
