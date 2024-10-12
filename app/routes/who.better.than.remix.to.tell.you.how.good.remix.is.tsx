@@ -3,7 +3,7 @@ import type { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Ryan knows best - VISCON" },
+    { title: "Ryan Knows Best - VISCON" },
     {
       name: "description",
       content: "To demonstrate they know what they are talking about..."

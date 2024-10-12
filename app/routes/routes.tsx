@@ -2,6 +2,7 @@ import { Page } from "~/components/App";
 import type { MetaFunction } from "@remix-run/node";
 import brooksPic from "~/images/DotRoutes.png";
 import spider from "~/images/dynamicSegments.png";
+import { Outlet } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -22,6 +23,7 @@ export default function () {
           <img height={400} width={1000} src={spider} alt={"Spider-man meme"} />
         </div>
       </div>
+      <Outlet />
     </Page>
   );
 }

@@ -70,10 +70,12 @@ const Sidebar = () => {
               <p className="text-lg font-bold">Bread & Butter</p>
               <ul className="indent-3">
                 <NavLinkWrapper to={"/routes"} title="Routing" />
-                <NavLinkWrapper
-                  to={"/routes/layout"}
-                  title="Layouts & Outlet"
-                />
+                <p className="indent-6">
+                  <NavLinkWrapper
+                    to={"/routes/layout"}
+                    title="Layouts & Outlet"
+                  />
+                </p>
                 <NavLinkWrapper to={"/loaders"} title="Loaders" />
                 <NavLinkWrapper to={"/actions"} title="Actions" />
               </ul>
