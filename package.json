@@ -16,16 +16,15 @@
     "@remix-run/react": "^2.12.0",
     "@remix-run/serve": "^2.12.0",
     "@remixicon/react": "^4.2.0",
-    "@types/prismjs": "^1.26.4",
     "@types/react-syntax-highlighter": "^15.5.13",
     "esbuild": "^0.23.0",
     "framer-motion": "^11.5.5",
     "isbot": "^4.1.0",
     "prettier": "^3.3.3",
-    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.3.0",
+    "react-syntax-highlighter": "^15.5.0",
     "remix-themes": "^1.5.1"
   },
   "devDependencies": {
@@ -50,10 +49,5 @@
   },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:nrsundberg/viscon-remix.git",
-  "author": "nrsundberg <nrsundbe@ncsu.edu>",
-  "license": "MIT"
+  }
 }
