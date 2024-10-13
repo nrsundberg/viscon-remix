@@ -5,6 +5,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
 import { Link } from "@remix-run/react";
+import { Divider } from "@nextui-org/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -130,7 +131,17 @@ export async function action({ request, params }: ActionFunctionArgs) {
         <pre className="language-ts w-fit">
           <code className="language-ts">{codeString}</code>
         </pre>
-
+        <Divider className="my-4" />
+        <p className="text-2xl w-[1200px]">
+          Here we have an action to create a chat in JimBot. <br /> It's also
+          worth noting you could swtich case on the HTTP method as well.
+          <ol className="ml-4 list-disc list-inside text-lg">
+            <ul>PATCH</ul>
+            <ul>GET</ul>
+            <ul>DELETE</ul>
+            <ul>etc..</ul>
+          </ol>
+        </p>
         <pre className="language-ts w-fit">
           <code className="language-ts">{codeString2}</code>
         </pre>

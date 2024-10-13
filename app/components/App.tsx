@@ -22,7 +22,7 @@ export function Page({ ...props }) {
     <AppPage>
       <PageMainContent>
         <Sidebar />
-        <div className="overflow-auto h-[88lvh] w-full">{props.children}</div>
+        <div className="overflow-auto h-[80lvh] w-full">{props.children}</div>
       </PageMainContent>
     </AppPage>
   );

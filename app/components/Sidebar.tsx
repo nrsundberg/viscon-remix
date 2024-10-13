@@ -93,10 +93,10 @@ const Sidebar = () => {
               </p>
               <ul className="indent-3">
                 <RouteSearchParams to={"/review?p=what"} title="What is it?" />
-                <RouteSearchParams to={"/review?p=how"} title="How to start?" />
+                <RouteSearchParams to={"/review?p=how"} title="How it works?" />
                 <RouteSearchParams
                   to={"/review?p=why"}
-                  title="Why to use it?"
+                  title="Why use Remix?"
                 />
               </ul>
             </div>

@@ -38,17 +38,6 @@ export default function Index() {
               SSR.
             </p>
           </div>
-          {/* <div className="bg-purple-800 bg-opacity-75 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-            <h2 className="text-2xl font-bold mb-4">React Power</h2>
-            <p>Build dynamic UIs with the world’s most popular library.</p>
-          </div>
-          <div className="bg-purple-800 bg-opacity-75 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-            <h2 className="text-2xl font-bold mb-4">Deploy with Fly.io</h2>
-            <p>
-              Deploy full-stack apps close to your users with global edge
-              deployment.
-            </p>
-          </div> */}
         </div>
       </div>
     </Page>
