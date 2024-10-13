@@ -18,7 +18,6 @@ export default function ErrorBoundaryComponent() {
 
 export function ErrorBoundary() {
   let error = useRouteError();
-  console.error(error);
   return (
     <div className="border-red-500 border-2 w-full h-full p-4">
       <h2>Oh snap!</h2>

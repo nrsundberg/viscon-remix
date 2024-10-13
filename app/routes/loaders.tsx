@@ -5,6 +5,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
 import chatGPT from "~/images/chatGPT.png";
+import { Divider } from "@nextui-org/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -134,14 +135,34 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
           alt="ChatGPT"
         />
         <p className="text-2xl w-[1200px] mb-10">
-          There is nothing simple about this picture... but it might be a good
-          example of how code can simplify relationship.
+          There is nothing simple about this picture...
+          <br />
+          but it might be a good example of how code can simplify relationship.
         </p>
-        <pre className="language-ts">
+        <pre className="language-ts w-fit">
           <code className="language-ts">{codeString}</code>
         </pre>
-
-        <pre className="language-ts">
+        <Divider className="my-4" />
+        <p className="text-2xl w-[1200px] py-5">
+          Below is an example from JimBot.
+        </p>
+        <ol className="list-decimal ml-4 list-inside text-2xl">
+          <li>Update the tab title to flect the thread ID</li>
+          <li>Loader check we have a threadId (could be undefined)</li>
+          <li>Get user and protect route (redirect if not authorized)</li>
+          <li>
+            Find thread in database otherwise throw error and redirect to home
+          </li>
+          <li>
+            Check if a chat is in processing stage (websocket will be passing
+            data for that chat if true)
+          </li>
+          <li>
+            Get chats and return nexted relationships (imagine joining tables or
+            with in SQL){" "}
+          </li>
+        </ol>
+        <pre className="language-ts w-fit">
           <code className="language-ts">{codeString2}</code>
         </pre>
       </div>

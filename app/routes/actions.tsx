@@ -127,11 +127,11 @@ export async function action({ request, params }: ActionFunctionArgs) {
           </Link>
           ) for Tome School, now we need to be able to update it.
         </p>
-        <pre className="language-ts">
+        <pre className="language-ts w-fit">
           <code className="language-ts">{codeString}</code>
         </pre>
 
-        <pre className="language-ts">
+        <pre className="language-ts w-fit">
           <code className="language-ts">{codeString2}</code>
         </pre>
       </div>

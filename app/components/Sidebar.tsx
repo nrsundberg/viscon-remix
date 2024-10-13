@@ -55,14 +55,13 @@ const Sidebar = () => {
                   title="Remix"
                 />
                 <NavLinkWrapper to={"/roadmap"} title="Trajectory" />
-                <NavLinkWrapper to={"/devX"} title="Speeeeed" />
               </ul>
             </div>
             <div>
               <p className="text-lg font-bold">Init Project</p>
               <ul className="indent-3">
-                <NavLinkWrapper to={"/starting"} title="Needs" />
-                <NavLinkWrapper to={"/deployment"} title="Providers" />
+                <NavLinkWrapper to={"/starting"} title="The Fit" />
+                <NavLinkWrapper to={"/deployment"} title="'The Epic Stack'" />
               </ul>
             </div>
             <div>
