@@ -7,8 +7,11 @@ import "prismjs/components/prism-typescript";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Route Modules - VISCON" },
-    { name: "description", content: "Is Remix gone forever?" }
+    { title: "We'll Make It, I Swear - VISCON" },
+    {
+      name: "description",
+      content: "What are actions and why are they so usefull?"
+    }
   ];
 };
 

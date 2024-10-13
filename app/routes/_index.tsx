@@ -1,20 +1,23 @@
-import { Divider } from "@nextui-org/react";
 import type { MetaFunction } from "@remix-run/node";
-import Sidebar from "~/components/Sidebar";
-import { ThemeSwitcher } from "~/components/ThemeSwitcher";
-import React from "react";
-import {Page} from "~/components/App";
+import { Page } from "~/components/App";
+import { TextWrapper } from "~/utils/ComponentUtils";
 
 export const meta: MetaFunction = () => {
   return [
     { title: "Remix Intro - VISCON" },
-    { name: "description", content: "Welcome to our Remix intro!" },
+    { name: "description", content: "Welcome to our Remix intro!" }
   ];
 };
 
 export default function Index() {
   return (
     <Page>
+      <TextWrapper>
+        Welcome to my VISCON Remix intro! This is a simple page to show off some
+        of the features of Remix. My goal for this presentation is to show you
+        the benfits and why you might reach for Remix (React Router) the next
+        time you are starting a project!
+      </TextWrapper>
     </Page>
   );
 }

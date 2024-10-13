@@ -31,9 +31,8 @@ const Sidebar = () => {
 
   return (
     <div
-      className="grid grid-cols-[1fr_15px]"
+      className={`grid grid-cols-[1fr_15px] ${isCollapsed ? "w-[50px]" : "w-[250px]"} transition-width`}
       style={{
-        width: isCollapsed ? "50px" : "250px",
         transition: "width 0.3s"
       }}
     >
@@ -47,7 +46,7 @@ const Sidebar = () => {
           {isCollapsed ? <RiMenuFold2Fill /> : <RiMenuFoldFill />}
         </Button>
         {!isCollapsed && (
-          <div>
+          <div className="col-span-1 w-[235px]">
             <div>
               <p className="text-lg font-bold">What, Who, When, Why</p>
               <ul className="indent-3">
@@ -81,11 +80,27 @@ const Sidebar = () => {
               </ul>
             </div>
             <div>
-              <p className="text-lg font-bold">Review</p>
+              <p className="text-lg font-bold">
+                <NavLink
+                  to={"/review"}
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                        ? "text-green-500 font-bold underline"
+                        : ""
+                  }
+                >
+                  Review
+                </NavLink>
+              </p>
               <ul className="indent-3">
-                <NavLinkWrapper to={"/review?p=what"} title="What is it?" />
-                <NavLinkWrapper to={"/review?p=how"} title="How to start?" />
-                <NavLinkWrapper to={"/review?p=why"} title="Why to use it?" />
+                <RouteSearchParams to={"/review?p=what"} title="What is it?" />
+                <RouteSearchParams to={"/review?p=how"} title="How to start?" />
+                <RouteSearchParams
+                  to={"/review?p=why"}
+                  title="Why to use it?"
+                />
               </ul>
             </div>
           </div>
@@ -97,3 +112,11 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+function RouteSearchParams({ to, title }: { to: string; title: string }) {
+  return (
+    <li>
+      <NavLink to={to}>{title}</NavLink>
+    </li>
+  );
+}
