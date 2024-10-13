@@ -3,7 +3,7 @@ import { MetaFunction } from "@remix-run/node";
 import { useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
-import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-typescript.js";
 import { Link } from "@remix-run/react";
 import { Divider } from "@nextui-org/react";
 
