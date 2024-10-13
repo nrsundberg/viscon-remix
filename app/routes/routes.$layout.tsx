@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Outlet, useLoaderData } from "@remix-run/react";
 import { Page } from "~/components/App";
 
 export async function loader({ params }: LoaderFunctionArgs) {
@@ -9,5 +9,10 @@ export async function loader({ params }: LoaderFunctionArgs) {
 export default function () {
   let { layout } = useLoaderData<typeof loader>();
 
-  return <p>Hello, '{layout}'</p>;
+  return (
+    <div>
+      <p>Hello, '{layout}'</p>
+      <Outlet />
+    </div>
+  );
 }

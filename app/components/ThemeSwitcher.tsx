@@ -1,6 +1,7 @@
-import { RiMoonFill, RiSunFill } from "@remixicon/react";
-import { Button } from "@nextui-org/react";
+import { Button, Spinner } from "@nextui-org/react";
 import { Theme, useTheme } from "remix-themes";
+import { ClientOnly } from "remix-utils/client-only";
+import { RiMoonFill, RiSunFill } from "@remixicon/react";
 
 export const ThemeSwitcher = () => {
   const [theme, setTheme] = useTheme();
@@ -13,11 +14,11 @@ export const ThemeSwitcher = () => {
           variant="light"
           onClick={() => setTheme(Theme.LIGHT)}
         >
-          <RiSunFill />
+          <ClientOnly fallback={<Spinner />}>{() => <RiSunFill />}</ClientOnly>
         </Button>
       ) : (
         <Button isIconOnly variant="light" onClick={() => setTheme(Theme.DARK)}>
-          <RiMoonFill />
+          <ClientOnly fallback={<Spinner />}>{() => <RiMoonFill />}</ClientOnly>
         </Button>
       )}
     </div>
