@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
+import { Link } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -119,6 +120,13 @@ export async function action({ request, params }: ActionFunctionArgs) {
   return (
     <Page>
       <div className="flex-col">
+        <p className="text-2xl w-[1200px]">
+          As we went over how to get the data (in{" "}
+          <Link className="text-blue-500 underline" to={"/loaders"}>
+            loaders
+          </Link>
+          ) for Tome School, now we need to be able to update it.
+        </p>
         <pre className="language-ts">
           <code className="language-ts">{codeString}</code>
         </pre>

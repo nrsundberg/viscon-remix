@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
+import chatGPT from "~/images/chatGPT.png";
 
 export const meta: MetaFunction = () => {
   return [
@@ -117,6 +118,25 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   return (
     <Page>
       <div className="flex-col">
+        <p className="text-2xl w-[1200px]">
+          Below is an example from the app we built for Tome School. They needed
+          an app to track cars coming to pick up students at the end of the day.
+          Each car would be assigned a space, each space to n number of students
+          and each student to a homeroom...
+          <br />
+          <br />I asked Chat GPT to help us with this...
+        </p>
+        <img
+          className="py-3"
+          height={300}
+          width={900}
+          src={chatGPT}
+          alt="ChatGPT"
+        />
+        <p className="text-2xl w-[1200px] mb-10">
+          There is nothing simple about this picture... but it might be a good
+          example of how code can simplify relationship.
+        </p>
         <pre className="language-ts">
           <code className="language-ts">{codeString}</code>
         </pre>
