@@ -45,11 +45,85 @@ export async function action({ params }: ActionFunctionArgs) {
   }
 }`;
 
+  const codeString2 = `// this serves to create the initial Chat in the db
+export async function action({ request, params }: ActionFunctionArgs) {
+  let formData = await request.formData();
+  try {
+    // Normal case is submission through form
+    // Retry case is through button
+    switch (formData.get("promptType")?.toString()) {
+      case "normal":
+        let prompt = formData.get("prompt")?.toString();
+        const errors = {};
+
+        invariant(prompt, "must include prompt");
+        invariant(params.threadId, "must include threadId");
+
+        await prisma.thread.update({
+          where: { id: parseInt(params.threadId) },
+          data: {
+            lastUpdate: new Date()
+          }
+        });
+
+        let tempChat = await prisma.chats.create({
+          data: {
+            prompt: prompt,
+            response: null, // since response is null, it will be caught as an "unfinished chat" by the loader
+            createdDateTime: new Date().toLocaleString(),
+            score: 0,
+            threadId: parseInt(params.threadId)
+          }
+        });
+        let newChatId = tempChat.id;
+
+        return json({ chatId: newChatId });
+      case "retry":
+        invariant(params.threadId, "must include threadId");
+
+        const chatId = Number(formData.get("chatId"));
+
+        // Update past responses field in db
+        const chat = await prisma.chats.findUniqueOrThrow({
+          where: { id: chatId }
+        });
+
+        let tempChat2 = await prisma.chats.create({
+          data: {
+            prompt: chat.prompt,
+            response: null, // since response is null, it will be caught as an "unfinished chat" by the loader
+            retriedChatId: chat.retriedChatId ?? chat.id,
+            createdDateTime: new Date().toLocaleString(),
+            score: 0,
+            threadId: parseInt(params.threadId),
+            isProcessing: false
+          }
+        });
+
+        let oldChat = await prisma.chats.update({
+          where: { id: chat.id },
+          data: { isActive: false }
+        });
+        return json({ chatId: tempChat2.id });
+    }
+  } catch (e) {
+    console.error("Error: ", e);
+  }
+  return null;
+}
+`;
+
   return (
     <Page>
-      <pre className="language-ts">
-        <code className="language-ts">{codeString}</code>
-      </pre>
+      <div className="flex-col">
+        <pre className="language-ts">
+          <code className="language-ts">{codeString}</code>
+        </pre>
+
+        <pre className="language-ts">
+          <code className="language-ts">{codeString2}</code>
+        </pre>
+      </div>
     </Page>
   );
 }

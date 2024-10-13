@@ -52,17 +52,78 @@ export default function () {
     };
   }`;
 
+  const codeString2 = `export const meta: MetaFunction = ({ params }) => {
+  return [
+    { title: 'Thread {params.threadId} - Jimbot' },
+    { name: "description", content: "User homepage" }
+  ];
+};
+
+//loads in new chat information for current thread
+export async function loader({ params, request }: LoaderFunctionArgs) {
+  invariant(params.threadId, "params.threadId is required");
+  let currentThread = null;
+  let user = await getUserInfoProtected(request);
+
+  try {
+    currentThread = await prisma.thread.findUniqueOrThrow({
+      where: { id: parseInt(params.threadId), kindeId: user.id }
+    });
+  } catch {
+    // Note: Loaders are server-side so user sees silent render with no info -- prob fine for our case
+    console.error('ThreadId "{params.threadId}" doesnt exist');
+    throw redirect("/home");
+  }
+
+  let allChats = await prisma.chats.findMany({
+    where: { threadId: parseInt(params.threadId) }
+  });
+
+  // check if there are any chats that need a response or aren't finished generating their response
+  let unfinishedChat = allChats.find(
+    (chat) => (!chat.response && !chat.isProcessing) || chat.isProcessing
+  );
+
+  let unfinishedChatId = null;
+  if (unfinishedChat != undefined) {
+    unfinishedChatId = unfinishedChat.id;
+  }
+
+  let headers = new Headers();
+
+  if (isPrefetch(request)) {
+    headers.set("Cache-Control", "private, max-age=5, smax-age=0");
+  }
+  let chatHistory = await prisma.chats.findMany({
+    where: { threadId: parseInt(params.threadId) },
+    include: {
+      sources: { include: { source: true } },
+      responses: {
+        include: { sources: { include: { source: true } } }
+      }
+    }
+  });
+  return json(
+    {
+      user: await getUserInfoProtected(request),
+      threadId: parseInt(params.threadId),
+      threadMode: currentThread.mode,
+      chats: chatHistory,
+      unfinishedChatId: unfinishedChatId
+    },
+    { headers }
+  );
+}`;
   return (
     <Page>
-      <div className="grid grid-cols-[1fr_2fr] gap-3">
+      <div className="flex-col">
         <pre className="language-ts">
           <code className="language-ts">{codeString}</code>
         </pre>
-        <iframe
-          className="h-full w-full"
-          src="https://tome-bingo.fly.dev"
-          title="Tome Bingo"
-        ></iframe>
+
+        <pre className="language-ts">
+          <code className="language-ts">{codeString2}</code>
+        </pre>
       </div>
     </Page>
   );
