@@ -20,7 +20,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: [
-        "prismjs/components/prism-typescript",
+        "prismjs/components/prism-typescript.js",
         "prismjs/themes/prism-tomorrow.css",
         "/^prismjs:.*/",
         "prismjs"

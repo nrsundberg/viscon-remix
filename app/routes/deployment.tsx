@@ -1,7 +1,7 @@
 import { Page } from "~/components/App";
 import { Button } from "@nextui-org/react";
 import type { MetaFunction } from "@remix-run/node";
-import { SiPrisma, SiSupabase, SiTailwindcss, SiVercel } from "react-icons/si";
+import { SiPrisma, SiSupabase, SiTailwindcss } from "react-icons/si";
 import { FaFly } from "react-icons/fa";
 import { Link } from "@remix-run/react";
 
