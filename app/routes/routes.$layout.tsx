@@ -4,6 +4,9 @@ import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/components/prism-typescript.js";
+import prismStyle from "prismjs/themes/prism-tomorrow.css?url";
+
+export const links = () => [{ rel: "stylesheet", href: prismStyle }];
 
 export async function loader({ params }: LoaderFunctionArgs) {
   return { layout: params.layout };

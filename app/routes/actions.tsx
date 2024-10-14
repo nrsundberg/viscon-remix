@@ -5,6 +5,9 @@ import Prism from "prismjs";
 import "prismjs/components/prism-typescript.js";
 import { Link } from "@remix-run/react";
 import { Divider } from "@nextui-org/react";
+import prismStyle from "prismjs/themes/prism-tomorrow.css?url";
+
+export const links = () => [{ rel: "stylesheet", href: prismStyle }];
 
 export const meta: MetaFunction = () => {
   return [
