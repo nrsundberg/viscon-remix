@@ -2,7 +2,6 @@ import { Page } from "~/components/App";
 import { MetaFunction } from "@remix-run/node";
 import { useEffect } from "react";
 import Prism from "prismjs";
-import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript.js";
 import chatGPT from "~/images/chatGPT.png";
 import { Divider } from "@nextui-org/react";

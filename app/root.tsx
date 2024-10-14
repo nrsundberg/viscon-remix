@@ -8,6 +8,9 @@ import {
 } from "@remix-run/react";
 import "./tailwind.css";
 import { NextUIProvider } from "@nextui-org/react";
+import prismStyle from "prismjs/themes/prism-tomorrow.css";
+
+export const links = () => [{ rel: "stylesheet", href: prismStyle }];
 
 function App() {
   const navigate = useNavigate();
