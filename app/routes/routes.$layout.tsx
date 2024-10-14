@@ -29,7 +29,8 @@ import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData, useRouteError } from "@remix-run/react";
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  if (params.error === "error") {
+  let { error } = params;
+  if (error) {
     throw new Error("This is a test error");
   }
   return { error: false };
