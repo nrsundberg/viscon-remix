@@ -4,9 +4,13 @@ import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/components/prism-typescript.js";
-import prismStyle from "prismjs/themes/prism-tomorrow.css?url";
 
-export const links = () => [{ rel: "stylesheet", href: prismStyle }];
+export const links = () => [
+  {
+    rel: "stylesheet",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-material-dark.min.css"
+  }
+];
 
 export async function loader({ params }: LoaderFunctionArgs) {
   return { layout: params.layout };
@@ -33,9 +37,9 @@ export async function loader({ params }: LoaderFunctionArgs) {
 export default function ErrorBoundaryComponent() {
   let data = useLoaderData();
   return (
-    <div className="border-green-500 border-2 w-full h-full p-4">
+    <p className="border-green-500 border-2 w-full h-full p-4">
       I am a route showing you the data you could render in this outlet.
-    </div>
+    </p>
   );
 }
 

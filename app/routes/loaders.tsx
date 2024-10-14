@@ -5,9 +5,13 @@ import Prism from "prismjs";
 import "prismjs/components/prism-typescript.js";
 import chatGPT from "~/images/chatGPT.png";
 import { Divider } from "@nextui-org/react";
-import prismStyle from "prismjs/themes/prism-tomorrow.css?url";
 
-export const links = () => [{ rel: "stylesheet", href: prismStyle }];
+export const links = () => [
+  {
+    rel: "stylesheet",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-material-dark.min.css"
+  }
+];
 
 export const meta: MetaFunction = () => {
   return [
